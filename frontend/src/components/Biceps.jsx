@@ -1,15 +1,8 @@
-// Bicep.jsx
 import React, { useRef, useEffect, useState } from 'react';
 import Webcam from 'react-webcam';
 import * as poseDetection from '@tensorflow-models/pose-detection';
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-backend-webgl';
-
-
-
-
-
-
 
 const Bicep = () => {
   const webcamRef = useRef(null);
@@ -18,8 +11,9 @@ const Bicep = () => {
   const [counter, setCounter] = useState(0);
   const [stage, setStage] = useState('start');
   const [feedback, setFeedback] = useState('Let’s get started! Maintain a straight back and full range of motion.');
+  const [lastFeedback, setLastFeedback] = useState('');
 
-  // Load MoveNet Model
+  // Load MoveNet model
   useEffect(() => {
     const loadModel = async () => {
       await tf.ready();
@@ -42,6 +36,22 @@ const Bicep = () => {
     let angle = Math.abs((radians * 180.0) / Math.PI);
     if (angle > 180.0) angle = 360 - angle;
     return angle;
+  };
+
+  // Speak feedback using a male voice
+  const speakFeedback = (text) => {
+    if ('speechSynthesis' in window && text && text !== lastFeedback) {
+      const maleVoice = speechSynthesis.getVoices().find(voice =>
+        voice.name.toLowerCase().includes('male') || voice.name.includes('Google UK English Male') // Adjust condition for male voice
+      );
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.voice = maleVoice || speechSynthesis.getVoices()[0]; // Fallback to default
+      utterance.rate = 0.9;
+      utterance.pitch = 1.1; // Slightly deeper pitch for male voice
+      speechSynthesis.cancel(); // Cancel ongoing speech to avoid overlap
+      speechSynthesis.speak(utterance);
+      setLastFeedback(text);
+    }
   };
 
   // Detect poses and give feedback on correct/incorrect posture
@@ -74,19 +84,21 @@ const Bicep = () => {
           ctx.fillText(`${Math.round(angle)}°`, elbow[0], elbow[1]);
 
           // Provide feedback based on bicep angle
+          let newFeedback = feedback;
           if (angle > 160) {
             setStage('down');
-            setFeedback('Lower your arm slowly to complete the rep.');
-          }
-
-          if (angle < 30 && stage === 'down') {
+            newFeedback = 'Lower your arm slowly to complete the rep.';
+          } else if (angle < 30 && stage === 'down') {
             setStage('up');
             setCounter((prevCounter) => prevCounter + 1);
-            setFeedback('Great job! Now, raise your arm with control.');
+            newFeedback = 'Great job! Now, raise your arm with control.';
+          } else if (angle > 30 && angle < 160 && stage === 'up') {
+            newFeedback = 'Incorrect posture! Ensure your elbow is bending fully.';
           }
 
-          if (angle > 30 && angle < 160 && stage === 'up') {
-            setFeedback('Incorrect posture! Ensure your elbow is bending fully.');
+          if (newFeedback !== feedback) {
+            setFeedback(newFeedback);
+            speakFeedback(newFeedback);
           }
 
           // Draw keypoints on canvas
@@ -108,10 +120,11 @@ const Bicep = () => {
     }, 100);
 
     return () => clearInterval(intervalId);
-  }, [detector, stage]);
+  }, [detector, stage, feedback]);
 
   return (
     <div className="bicep-container">
+      <h1 className="bicep-title">BICEPS </h1>
       <Webcam ref={webcamRef} className="webcam" />
       <canvas ref={canvasRef} className="canvas" />
 

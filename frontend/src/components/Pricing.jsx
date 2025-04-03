@@ -38,23 +38,24 @@ const Pricing = () => {
                 <p>For {element.length} Months</p>
               </div>
               <div className="description">
-                <p>
-                  <Check /> Equipment
-                </p>
-                <p>
-                  <Check /> All Day Fre Training
-                </p>
-                <p>
-                  <Check /> Free Restroom
-                </p>
-                <p>
-                  <Check /> 24/7 Skilled Support
-                </p>
-                <p>
-                  <Check /> 20 Days Freezing Option
-                </p>
-                <Link to={"/"}>Join Now</Link>
-              </div>
+  <p>
+    <Check /> AI-Powered Workout Guidance
+  </p>
+  <p>
+    <Check /> Real-Time Pose Correction
+  </p>
+  <p>
+    <Check /> Personalized Fitness Plans
+  </p>
+  <p>
+    <Check /> Progress Tracking & Analytics
+  </p>
+  <p>
+    <Check /> Gamified Challenges & Rewards
+  </p>
+  <Link to={"/"}>Get Started</Link>
+</div>
+
             </div>
           );
         })}

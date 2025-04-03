@@ -24,6 +24,7 @@ import Arm from "./components/Arm";
 import Biceps from "./components/Biceps";
 import Situp from "./components/Situp";
 import NewBicep from "./components/NewBiceps";
+import TreePose from"./components/TreePose";
 
 
 
@@ -37,13 +38,15 @@ const App = () => {
       <Navbar /> 
 
       <Routes>
-        <Route path="/" element={<Register />} />
+        <Route path="/" element={<Hero />} />
         
         <Route path="/register" element ={<Register/>} />
         <Route path="/login" element ={<Login/>} />
         <Route path="/hero" element={<Hero />} /> {/* Route for the homepage */}
         <Route path="/workouts" element={<WorkoutSessions />} /> 
         <Route path="/biceps" element={<Biceps />} />
+        <Route path="/situp" element={<Situp/>} />
+        <Route path="/treePose" element={<TreePose/>} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/about" element={< About/>} />
@@ -52,18 +55,19 @@ const App = () => {
         <Route path="/bmicalculator" element={<BMICalculator />} /> 
       </Routes>
       {/* <DataComponent/> */}
-      <Hero/>
+      
       
      
       
       <WorkoutSessions /> {/* This line might be redundant, as WorkoutSessions is already routed */}
       {/* <Detector />  */}
-      <Biceps />
-      {/* <Situp /> */}
+      {/* <Biceps /> */}
+      {/* <TreePose/> */}
+      {/* <Situp />  */}
       {/* <Neck/>
       <Arm/> */}
 
-      <NewBicep/>
+      {/* <NewBicep/> */}
       
       
      
@@ -72,6 +76,7 @@ const App = () => {
       <Pricing />
       <Contact />
       <BMICalculator />
+      <About />
        
       <ToastContainer theme="dark" position="top-center" />
     </Router>

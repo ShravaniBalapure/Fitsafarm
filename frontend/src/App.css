@@ -3,6 +3,181 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
 
+/* treepose start */
+/* General Container */
+.yoga-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e1e1e, #292929);
+  color: white;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Title Styling */
+.yoga-title {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Webcam Styling */
+.yoga-webcam {
+  width: 80%;
+  max-width: 640px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+/* Canvas Overlay */
+.yoga-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 640px;
+  z-index: 2;
+  border-radius: 10px;
+}
+
+/* Feedback Box */
+.yoga-feedback {
+  position: absolute;
+  bottom: 20px;
+  width: 80%;
+  max-width: 640px;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Counter Box */
+.yoga-counter {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .yoga-webcam,
+  .yoga-canvas {
+    width: 95%;
+  }
+
+  .yoga-title {
+    font-size: 24px;
+  }
+
+  .yoga-feedback {
+    font-size: 16px;
+  }
+
+  .yoga-counter {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+
+/* treepose end  */
+
+/* situp start */
+/* SITUP CONTAINER */
+.situp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+/* SITUP TITLE */
+.situp-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffcc00;
+}
+
+/* SITUP WEBCAM */
+.situp-webcam {
+  width: 640px;
+  height: 480px;
+  border: 2px solid #ffcc00;
+  border-radius: 10px;
+}
+
+/* SITUP CANVAS */
+.situp-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 640px;
+  height: 480px;
+  z-index: 10;
+}
+
+/* SITUP FEEDBACK BOX */
+.situp-feedback-box {
+  background-color: rgba(255, 204, 0, 0.2);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffcc00;
+  width: 80%;
+}
+
+/* SITUP COUNTER BOX */
+.situp-counter-box {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(255, 252, 252);
+}
+
+.situp-counter-box .situp-counter {
+  color: #ff5733;
+}
+
+.situp-counter-box .situp-stage {
+  color: #33ff57;
+}
+
+
+/* situp end */
+
+
+
+
 .logo {
   display: flex;
   align-items: center;
@@ -31,6 +206,8 @@
   display: none;
 }
 
+
+/* navbar end */
 
 /* Info */
 /* General Styles */
@@ -162,43 +339,92 @@ body {
 
 /* LOGIN AND REGISTER */
 /* LOGIN AND REGISTER */
+/* Overall Layout */
 .auth-container {
+  display: flex;
   height: 100vh;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.auth-background {
-  /* background-image: url('https://quickpose.ai/wp-content/uploads/elementor/thumbs/Yoga-Pose-Estimation-qg4o60kjwrq39cjqyge7999dyp4j0xhwl33d6f3i8g.png'); */
-  background-image: url('background.jpg');
-  background-size: cover;  /* Ensures the background image covers its area */
-  background-position: center;
-  background-repeat: no-repeat;
   width: 100%;
-  height: 90%;
+}
+
+/* Left Side - Logo and Information */
+.auth-background {
+  flex: 1;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
 }
 
+.fits-logo {
+  width: 120px;
+  height: auto;
+}
+
+/* Right Side - Login Box */
 .auth-box {
-  width: 35%;            /* Adjust the login/register box size */
+  flex: 0.4;
   max-width: 400px;
-  min-width: 320px;
-  margin-right: 40px;    /* Add right margin to move the box left */
-  padding: 20px;         /* Add internal padding */
-  background-color: white; 
-  border-radius: 10px;   /* Add rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  /* Subtle shadow for a professional look */
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 50px;
 }
 
+/* Button Styles */
+.btn-primary, .btn-secondary {
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in-out;
+  padding: 12px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+  .auth-container {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .auth-background {
+      display: none; /* Hide background on small screens */
+  }
+
   .auth-box {
-    width: 80%;  /* Make the box responsive for smaller screens */
-    margin-right: 20px;  /* Adjust the right margin for smaller devices */
+      width: 90%;
+      max-width: 400px;
+      margin-right: 0;
   }
 }
-
 
 
 
@@ -311,18 +537,37 @@ body {
 
 /* Bicep.css */
 
-
 .bicep-container {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(0, 0, 0);
+  background-color: black;
   background-image: url(background.jpg);
+  background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+.bicep-title {
+  position: absolute;  /* Keeps the title fixed at the top */
+  top: 10px; /* Adjusts the spacing from the top */
+  left: 50%; /* Centers the title horizontally */
+  transform: translateX(-50%); /* Ensures perfect centering */
+  font-size: 30px; /* Bigger font for emphasis */
+  font-weight: bold; 
+  text-align: center;
+  text-transform: uppercase;
+  color: white; /* Stands out against the dark background */
+  letter-spacing: 2px;
+  background: rgba(0, 0, 0, 0.7); /* Adds a slight background for visibility */
+  padding: 1px 10px;
+  border-radius: 14px; /* Soft rounded edges */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space between emojis and text */
+}
 .webcam, .canvas {
   width: 100vw;
   height: 100vh;
@@ -332,7 +577,7 @@ body {
 
 .feedback-box {
   position: absolute;
-  top: 10px;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(8, 8, 8, 0.6);
@@ -340,7 +585,9 @@ body {
   border-radius: 10px;
   color: white;
   font-size: 18px;
+  text-align: center;
 }
+
 
 .counter-box {
   position: absolute;
@@ -815,265 +1062,212 @@ body {
 
 
 
+/* /hero start */
 
+/* Hero Section */
 .hero {
-  min-height: 100vh;
   position: relative;
-  overflow: hidden; /* Ensure content doesn't overflow the section */
+  width: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
-  padding: 150px 0 70px 0;
-  padding-left: 7rem;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
 }
 
-.hero::before {
-  content: "";
+/* Background Video */
+.background-video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.75); /* Dark overlay for readability */
-  z-index: 1; /* Ensures this overlay is above the video */
+  object-fit: cover;
+  filter: brightness(0.5);
 }
 
-.hero video.background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the video covers the background */
-  z-index: 0; /* Places the video behind everything else */
-}
-
-.hero .content {
+/* Content Overlay */
+.content {
   position: relative;
-  z-index: 2; /* Keeps the content above the video and overlay */
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  z-index: 10;
+  color: white;
+  text-transform: uppercase;
 }
 
-.hero .content .title {
-  color: whitesmoke;
+/* Title */
+.title h1 {
   font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, #ff512f, #f09819);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 1.5s infinite alternate;
 }
 
-.hero .content .sub-title p {
-  font-weight: 400;
-  color: whitesmoke;
-  font-size: 1.8rem;
-  line-height: 45px;
-}
-
-.hero .content .sub-title p:last-child {
-  color: #0095ff;
-}
-
-.hero .content .buttons {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.hero .content .buttons button {
-  padding: 15px 30px;
-  font-size: 1.2rem;
-  color: #0095ff;
-  border: 1px solid #0095ff;
-  background: transparent;
-  transition: 0.3s;
-}
-
-.hero .content .buttons button:hover {
-  cursor: pointer;
-  background: #0095ff;
-  color: whitesmoke;
-  transition: 0.3s;
-}
-
-/* Media Queries (Unchanged) */
-@media (max-width: 1050px) {
-  .hero {
-    padding-left: 2.5rem;
-  }
-  header {
-    margin-left: 2.5rem;
-  }
-  .hero .content .title {
-    font-size: 2.75rem;
-  }
-  .hero .content .sub-title p {
-    font-size: 1.3rem;
-    line-height: normal;
-    margin-bottom: 5px;
-  }
-}
-
-@media (max-width: 880px) {
-  .hero {
-    background-position: center;
-  }
-  .hero .content .title {
-    font-size: 2.45rem;
-  }
-  .hero .content .sub-title p {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero {
-    background-position: bottom;
-  }
-  .hero .content .title {
-    font-size: 2.2rem;
-  }
-  .hero .content .sub-title p {
-    font-size: 1rem;
-  }
-  .hero .content .buttons button {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 467px) {
-  .hero {
-    padding-left: 1rem;
-  }
-  header {
-    margin-left: 1rem;
-  }
-  .hero .content .buttons {
-    flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
-  }
-}
-
-
-/* General Section Styles */
-.workout_sessions {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 80px 20px;
-  background-color: #f4f4f4;
-}
-
-.wrapper {
-  max-width: 1200px;
-  width: 100%;
-  margin-bottom: 60px;
-}
-
-.section-title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #333;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.section-description {
+/* Subtitle */
+.sub-title p {
   font-size: 1.5rem;
-  color: #666;
-  text-align: center;
-  margin-bottom: 40px;
+  margin-top: 10px;
+  font-weight: 500;
+  opacity: 0.9;
 }
 
-.hero-image {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Bootcamp Section */
-.bootcamps-wrapper {
-  background-color: #fff;
-  padding: 40px 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.bootcamps-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #333;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.bootcamps-description {
-  font-size: 1.4rem;
-  color: #666;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.bootcamps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.bootcamp-card {
-  background-color: #fafafa;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
+/* Buttons */
+.buttons {
+  margin-top: 20px;
   display: flex;
-  flex-direction: column;
   gap: 15px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  justify-content: center;
 }
 
-.bootcamp-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.primary-btn,
+.secondary-btn {
+  font-size: 1.2rem;
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.bootcamp-title {
-  font-size: 1.8rem;
-  font-weight: 600;
+.primary-btn {
+  background: linear-gradient(45deg, #ff512f, #dd2476);
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.primary-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 81, 47, 0.8);
+}
+
+.secondary-btn {
+  background: none;
+  color: white;
+  border: 2px solid white;
+}
+
+.secondary-btn:hover {
+  transform: scale(1.1);
+  background: white;
   color: #333;
 }
 
-.bootcamp-description {
+/* Glow Effect */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 81, 47, 0.7);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(255, 81, 47, 1);
+  }
+}
+
+
+/* /hero end */
+
+/* workout start */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: url(/work1b.jpg) rgba(0, 0, 0, 0.621);
+  
+  /* background: linear-gradient(to right, #141E30, #243B55); */
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.workout-sessions {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.description {
   font-size: 1.2rem;
-  color: #555;
+  opacity: 0.8;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.6;
+  color: #0095ff;
+  font-size:25px;
+  
 }
 
-/* Responsive Media Queries */
-@media (max-width: 1200px) {
-  .section-title {
-    font-size: 2.5rem;
-  }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
 
-  .section-description {
-    font-size: 1.3rem;
-  }
+.card {
+  background: rgba(131, 15, 15, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  color: white;
+}
 
-  .bootcamps-title {
-    font-size: 2rem;
-  }
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
 
-  .bootcamp-card {
-    padding: 15px;
-  }
+.workout-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
-  .bootcamp-title {
-    font-size: 1.6rem;
-  }
+.workout-title {
+  font-size: 1.6rem;
+  margin: 15px 0 10px;
+  font-weight: 600;
+}
 
-  .bootcamp-description {
-    font-size: 1rem;
+.workout-description {
+  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.animated-card {
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+/* workout end  */
 
 .gallery {
   background: #111;
@@ -1222,215 +1416,8 @@ body {
     margin-bottom: 30px;
   }
 }
+/* start about */
 
-/* Full-page container */
-.about-page {
-  display: flex;
-  justify-content: center;
-  background: url(/background.jpg) rgba(0, 0, 0, 0.621);
-  align-items: center;
-  flex-direction: column;
-  height: 200vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width */
-  background-color: #0d1117; /* Dark background */
-  color: #ffffff; /* Light text */
-  font-family: 'Arial', sans-serif;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  animation: fadeIn 1.5s ease-out;
-}
-
-/* Wrapper for all content */
-.content-wrapper {
-  text-align: center;
-  max-width: 80%; /* Limits content width for better readability */
-  animation: slideUp 1s ease-out;
-}
-
-/* About section */
-.about-section {
-  margin-bottom: 40px;
-  opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-.about-section h1 {
-  font-size: 3rem;
-  color: #2f81f7; /* Blue heading */
-  margin-bottom: 15px;
-  text-transform: uppercase;
-}
-
-.about-section p {
-  font-size: 1.5rem;
-  margin: 10px 0;
-  line-height: 1.8;
-  color: #e0e0e0;
-}
-
-/* Image Section */
-.about-image-section {
-  margin: 20px 0;
-}
-
-.image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.about-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border: 2px solid #2f81f7; /* Blue border */
-  transition: transform 0.3s ease-in-out;
-}
-
-.about-image:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
-}
-
-/* Thought box styling */
-.thought-box {
-  background-color: #161b22; /* Slightly lighter dark background */
-  border: 2px solid #2f81f7; /* Blue border */
-  border-radius: 15px;
-  padding: 20px;
-  text-align: center;
-  margin-top: 40px;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.thought-box p {
-  font-size: 1.8rem;
-  font-style: italic;
-  color: #ffffff;
-}
-
-/* Team Section */
-.team-section {
-  margin-top: 60px;
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-.team-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #2f81f7;
-  margin-bottom: 30px;
-}
-
-.team-members {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  animation: slideIn 1s ease-out;
-}
-
-.team-member {
-  text-align: center;
-  width: 200px;
-  opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-.team-member-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #2f81f7;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.team-member-img:hover {
-  transform: scale(1.1);
-}
-
-.team-member h3 {
-  font-size: 1.2rem;
-  color: #ffffff;
-  margin-top: 15px;
-}
-
-.team-member p {
-  font-size: 1rem;
-  color: #bbb;
-}
-
-/* Keyframe animations for various effects */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .about-section h1 {
-    font-size: 2.5rem;
-  }
-
-  .about-section p {
-    font-size: 1.2rem;
-  }
-
-  .thought-box p {
-    font-size: 1.5rem;
-  }
-
-  .about-image {
-    max-width: 90%; /* Adjust image size for smaller screens */
-  }
-
-  .team-members {
-    flex-direction: column;
-  }
-
-  .team-member {
-    margin-bottom: 40px;
-  }
-}
 
 /* end about */
 

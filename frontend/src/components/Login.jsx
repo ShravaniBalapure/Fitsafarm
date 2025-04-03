@@ -72,7 +72,6 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -80,36 +79,28 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        // axios.post('http://localhost:3001/login', { email, password })
         axios.post('https://fitsafarm-backend.onrender.com/login', { email, password })
+
             .then(result => {
-                console.log(result);
+                console.log("Backend Response:", result.data);
                 if (result.data === "Success") {
                     alert('Login successful!');
-                    navigate('/home');
+                    navigate('/hero');
                 } else {
                     alert('Incorrect password! Please try again.');
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log("Login Error:", err));
     };
 
     return (
-        <div className="auth-container d-flex vh-100 align-items-center justify-content-center">
-            <div className="auth-background">
-                <div className="overlay-content text-white text-center p-4">
-                    <img src="/FitsLogo.png" alt="Fitsafar Logo" className="fits-logo" />
-                    <h1 className="mt-3">Welcome to Fitsafar</h1>
-                    <p>Get healthier and energetic every day with easy exercises tailored for home workout enthusiasts and fitness beginners.</p>
-                    <ul className="text-start">
-                        <li><strong>Posture Correction:</strong> Real-time posture corrections while exercising</li>
-                        <li><strong>Workout Plan:</strong> Personalized workout plan based on your goal and fitness level</li>
-                        <li><strong>Demo Library:</strong> Exercise Demo Library to gain better exercise knowledge</li>
-                    </ul>
-                </div>
-            </div>
+        <div className="auth-container d-flex vh-100">
+            {/* Left Side - Logo & Information */}
             
-            {/* Login Box */}
-            <div className="auth-box bg-white p-4 rounded shadow">
+            
+            {/* Right Side - Login Box */}
+            <div className="auth-box bg-white p-4 rounded shadow d-flex flex-column justify-content-center">
                 <h2 className="mb-4 text-primary text-center">Login</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3 text-start">
@@ -134,9 +125,7 @@ const Login = () => {
                             required
                         />
                     </div>
-                    
-                    
-                    <Link to="/hero" className="btn btn-primary w-100">Login</Link>
+                    <button type="submit" className="btn btn-primary w-100">Login</button>
                 </form>
                 <p className="mt-3 text-center">Don't have an account?</p>
                 <Link to="/register" className="btn btn-secondary w-100">Register</Link>
